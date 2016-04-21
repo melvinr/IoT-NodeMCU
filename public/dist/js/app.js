@@ -1,0 +1,1 @@
+"use strict";d3.json("/api/data",function(a,s){var t=[],e=["sennsor1"],n=["sennsor2"];s.forEach(function(a,s){t.push(a.time),e.push(a.matthias.value1),n.push(a.matthias.value2)});c3.generate({data:{columns:[e,n]},axis:{x:{type:"category",categories:t}}})});
