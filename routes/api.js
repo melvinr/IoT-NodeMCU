@@ -9,19 +9,24 @@ router.post('/', function(req, res) {
     var file = 'resources/data.json',
         now = moment().format('YYYY-MM-DD HH:mm:ss');
 
+    // var maximumMovement = 7;
+    // var minimumMovement = 3;
+
+    // if (motionValue <= )
+
     jsonfile.readFile(file, function(err, obj) {
         var lastObject = getLastObject(obj),
-            value = req.body.input + lastObject.input.motion,
+            motionValue = JSON.parse(req.body.input) + JSON.parse(lastObject.input.motion),
             newdata = {
                 time: now,
                 input: {
-                    motion: value
+                    motion: motionValue
                 },
                 output: {
                     led: req.body.output || lastObject.output.led
                 }
             };
-        console.log(req.body)
+
         obj.push(newdata);
         jsonfile.writeFileSync(file, obj);
         res.redirect('/');
@@ -35,13 +40,7 @@ router.get('/status/input', function(req, res) {
         var pirValue = getLastObject(obj).input.motion;
         var amountPir = 0;
 
-        if (pirValue === 1) {
-          amountPir += 1;
-        } else {
-          amountPir;
-        }
-
-        res.send('{"motion":"' + amountPir + '"}');
+        res.send('{"motion":"' + pirValue + '"}');
     });
 });
 
