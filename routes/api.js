@@ -29,7 +29,7 @@ router.post('/', function(req, res) {
         var  newdata = {
                 time: now,
                 input: {
-                    motion: motionValue
+                    motion: req.body.input || motionValue
                 },
                 output: {
                     led: req.body.output || ledValue
