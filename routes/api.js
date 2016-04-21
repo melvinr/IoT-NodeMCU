@@ -13,26 +13,14 @@ router.post('/', function(req, res) {
 
     jsonfile.readFile(file, function(err, obj) {
         var lastObject = getLastObject(obj),
-            motionValue = JSON.parse(req.body.input) + JSON.parse(lastObject.input.motion);
-
-        var maximumMovement = 7;
-        var minimumMovement = 3;
-
-        if (motionValue <= minimumMovement) {
-          var ledValue = "green";
-        } else if (motionValue >= maximumMovement) {
-          var ledValue = "red";
-        } else {
-          var ledValue = "white";
-        }
-
-        var  newdata = {
+            motionValue = JSON.parse(req.body.input) + JSON.parse(lastObject.input.motion),
+            newdata = {
                 time: now,
                 input: {
                     motion: motionValue
                 },
                 output: {
-                    led: req.body.output || ledValue
+                    led: req.body.output || lastObject.output.led
                 }
             };
 
