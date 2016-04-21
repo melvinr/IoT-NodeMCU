@@ -20,4 +20,20 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/chart', function(req, res, next) {
+  jsonfile.readFile('resources/data.json', function(err, obj) {
+    if (err) {
+        res.status(404);
+        next();
+    }
+
+    res.render('chart', {
+        title: 'History',
+        description: 'On this page you can see the motion history',
+        data: getLastObject(obj)
+    });
+  });
+});
+
+
 module.exports = router;
