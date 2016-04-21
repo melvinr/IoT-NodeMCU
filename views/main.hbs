@@ -8,9 +8,9 @@
     <div class="{{data.output.led}} status"></div>
     <form action="/api" method="post">
         <select name="output">
-            <option value="red">Time for a break!</option>
-            <option value="orange">Almost time for a break...</option>
-            <option value="green">Let's be productive!</option>
+            <option value="red">You have got to rest before going to bed!</option>
+            <option value="white">You're ok.</option>
+            <option value="green">That was a great night's sleep!</option>
         </select>
         <button type="submit">
             Update
@@ -23,6 +23,6 @@
         <h2>Status ESP</h2>
         <p>Time updated: {{data.time}}</p>
         <p>Color led: {{data.output.led}}</p>
-        <p>Distance sensor: {{data.input.distance}} CM</p>
+        <p>Amount of motion detected: {{data.input.distance}} CM</p>
     </section>
 </section>

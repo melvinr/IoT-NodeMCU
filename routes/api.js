@@ -14,7 +14,7 @@ router.post('/', function(req, res) {
             newdata = {
                 time: now,
                 input: {
-                    distance: req.body.input || lastObject.input.distance
+                    motion: req.body.input || lastObject.input.motion
                 },
                 output: {
                     led: req.body.output || lastObject.output.led
@@ -27,12 +27,19 @@ router.post('/', function(req, res) {
     });
 });
 
-router.get('/status/:name', function(req, res) {
-    var name = req.params.name;
+router.get('/status/input', function(req, res) {
     var file = 'resources/data.json';
 
     jsonfile.readFile(file, function(err, obj) {
-        res.send('{"light":"' + getLastObject(obj)[name].led + '"}');
+        res.send('{"motion":"' + getLastObject(obj).input.motion + '"}');
+    });
+});
+
+router.get('/status/output', function(req, res) {
+    var file = 'resources/data.json';
+
+    jsonfile.readFile(file, function(err, obj) {
+        res.send('{"led":"' + getLastObject(obj).output.led + '"}');
     });
 });
 
