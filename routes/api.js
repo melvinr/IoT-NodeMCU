@@ -11,11 +11,10 @@ router.post('/', function(req, res) {
 
     jsonfile.readFile(file, function(err, obj) {
         var lastObject = getLastObject(obj),
-            value = req.body.input + lastObject.input.motion,
             newdata = {
                 time: now,
                 input: {
-                    motion: value
+                    motion: req.body.input || lastObject.input.motion
                 },
                 output: {
                     led: req.body.output || lastObject.output.led
@@ -32,17 +31,12 @@ router.get('/status/input', function(req, res) {
     var file = 'resources/data.json';
 
     jsonfile.readFile(file, function(err, obj) {
-        var pirValue = getLastObject(obj).input.motion;
-        var amountPir = 0;
-
-        res.send('{"motion":"' + pirValue + '"}');
+        res.send('{"motion":"' + getLastObject(obj).input.motion + '"}');
     });
 });
 
 router.get('/status/output', function(req, res) {
     var file = 'resources/data.json';
-
-
 
     jsonfile.readFile(file, function(err, obj) {
         res.send('{"led":"' + getLastObject(obj).output.led + '"}');
