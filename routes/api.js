@@ -35,7 +35,13 @@ router.get('/status/input', function(req, res) {
         var pirValue = getLastObject(obj).input.motion;
         var amountPir = 0;
 
-        res.send('{"motion":"' + pirValue + '"}');
+        if (pirValue === 1) {
+          amountPir += 1;
+        } else {
+          amountPir;
+        }
+
+        res.send('{"motion":"' + amountPir + '"}');
     });
 });
 
