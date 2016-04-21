@@ -1,0 +1,1 @@
+"use strict";d3.json("/api/data",function(o,t){var a=[],e=["sensor"];t.forEach(function(o,t){a.push(o.time),e.push(o.input.motion),console.log(e)});c3.generate({data:{columns:[e]},axis:{x:{type:"category",categories:a}}})});
