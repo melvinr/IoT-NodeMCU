@@ -9,21 +9,30 @@ router.post('/', function(req, res) {
     var file = 'resources/data.json',
         now = moment().format('YYYY-MM-DD HH:mm:ss');
 
-    // var maximumMovement = 7;
-    // var minimumMovement = 3;
 
-    // if (motionValue <= )
 
     jsonfile.readFile(file, function(err, obj) {
         var lastObject = getLastObject(obj),
-            motionValue = JSON.parse(req.body.input) + JSON.parse(lastObject.input.motion),
-            newdata = {
+            motionValue = JSON.parse(req.body.input) + JSON.parse(lastObject.input.motion);
+
+        var maximumMovement = 7;
+        var minimumMovement = 3;
+
+        if (motionValue <= minimumMovement) {
+          var ledValue = "green";
+        } else if (motionValue >= maximumMovement) {
+          var ledValue = "red";
+        } else {
+          var ledValue = "white";
+        }
+
+        var  newdata = {
                 time: now,
                 input: {
                     motion: motionValue
                 },
                 output: {
-                    led: req.body.output || lastObject.output.led
+                    led: req.body.output || ledValue
                 }
             };
 
