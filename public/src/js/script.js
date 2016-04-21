@@ -4,7 +4,7 @@ d3.json("/api/data", function(error, data) {
 
     data.forEach(function(element, index) {
         time.push(element.time);
-        sensor.push(element.input.distance);
+        sensor.push(element.input.motion);
         console.log(sensor);
     });
 
