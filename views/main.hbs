@@ -1,0 +1,28 @@
+<section class="chart">
+    <h2>Chart</h2>
+    <div id="chart"></div>
+</section>
+
+<section class="leds">
+    <h2>Status</h2>
+    <div class="{{data.output.led}} status"></div>
+    <form action="/api" method="post">
+        <select name="output">
+            <option value="red">You have got to rest before going to bed!</option>
+            <option value="white">You're ok.</option>
+            <option value="green">That was a great night's sleep!</option>
+        </select>
+        <button type="submit">
+            Update
+        </button>
+    </form>
+</section>
+
+<section class="sensors">
+    <section>
+        <h2>Status ESP</h2>
+        <p>Time updated: {{data.time}}</p>
+        <p>Color led: {{data.output.led}}</p>
+        <p>Amount of motion detected: {{data.input.distance}} CM</p>
+    </section>
+</section>
