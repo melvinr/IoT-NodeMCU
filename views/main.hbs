@@ -1,5 +1,5 @@
 <section class="leds">
-    <h2>Status</h2>
+    <h2>Sleeping status</h2>
     <div class="{{data.output.led}} status"></div>
     <form action="/api" method="post">
         <select name="output">
@@ -13,23 +13,11 @@
     </form>
 </section>
 
-
-<form action="/api" method="post">
-    <select name="input">
-        <option value="1">You have got to rest before going to bed!</option>
-        <option value="1">You're ok.</option>
-        <option value="1">That was a great night's sleep!</option>
-    </select>
-    <button type="submit">
-        Update
-    </button>
-</form>
-
 <section class="sensors">
     <section>
-        <h2>Status ESP</h2>
-        <p>Time updated: {{data.time}}</p>
-        <p>Color led: {{data.output.led}}</p>
+        <h2>Data</h2>
+        <p>Last update: {{data.time}}</p>
+        <p>LED color: {{data.output.led}}</p>
         <p>Amount of motion detected: {{data.input.motion}}</p>
     </section>
 </section>
