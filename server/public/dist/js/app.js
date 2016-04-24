@@ -1,0 +1,1 @@
+"use strict";d3.json("/api/data",function(t,e){var o=[],n=["Amount of movements during sleep"];e.forEach(function(t,e){o.push(t.time),n.push(t.input.motion)});var a=n.slice(Math.max(n.length-10,1)),s="Amount of movements during sleep";a.unshift(s),console.log(a);c3.generate({data:{columns:[a],xFormat:"%H:%M:%S"},axis:{x:{type:"category",categories:o}}})});
